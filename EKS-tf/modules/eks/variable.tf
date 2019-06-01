@@ -15,10 +15,13 @@ variable "common_tags" {
   type = "map"
 }
 
-variable "name" {}
+variable "name" {
+    default = "srijan"
+
+}
 
 variable "environment" {
-  default = "Dev"
+  default = "dev"
 }
 
 variable "k8s_master_version" {
@@ -31,7 +34,7 @@ variable "node-ami-id" {
 }
 
 variable "node-instance-type" {
-  default = "t3.medium"
+  default = "t2.medium"
 }
 
 variable "key" {
@@ -47,13 +50,13 @@ variable "volume_type" {
 }
 
 variable "minimum-node" {
-  default = "3"
+  default = "2"
 }
 
 variable "desired-node" {
-  default = "3"
+  default = "2"
 }
 
 variable "maximum-node" {
-  default = "6"
+  default = "2"
 }

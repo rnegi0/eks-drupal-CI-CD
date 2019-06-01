@@ -59,17 +59,17 @@ module "eks" {
 }
 
 
-# module "rds" {
-#   source      = "./modules/rds"
-#   shared_credentials_file = "${var.shared_credentials_file}"
-#   common_tags = "${local.common_tags}"
-#   name        = "${var.name}"
-#   environment = "${var.environment}"
-#   availability_zones = "${var.availability_zones}"
-#   db_subnet_group = "dev-db-subnet-group"
-#   cluster_name = "dev-rds-aurora-cluster"
-#   database_name= "test"
-# }
+module "rds" {
+  source      = "./modules/rds"
+  shared_credentials_file = "${var.shared_credentials_file}"
+  common_tags = "${local.common_tags}"
+  name        = "${var.name}"
+  environment = "${var.environment}"
+  availability_zones = "${var.availability_zones}"
+  db_subnet_group = "dev-db-subnet-group"
+  cluster_name = "dev-rds-aurora-cluster"
+  database_name= "test"
+}
 
 
 output "kubeconfig" {

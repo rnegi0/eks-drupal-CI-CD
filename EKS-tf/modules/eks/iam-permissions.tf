@@ -140,6 +140,6 @@ resource "aws_iam_role_policy_attachment" "demo-node-AmazonEC2ContainerRegistryR
 }
 
 resource "aws_iam_instance_profile" "eks-node" {
-  name = "${var.name}-${var.environment}-node-instance-profile"
+  name = "${var.name}-${var.environment}-node-instance-profile2"
   role = "${aws_iam_role.eks-node-role.name}"
 }
