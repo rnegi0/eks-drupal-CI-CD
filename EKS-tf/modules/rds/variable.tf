@@ -18,7 +18,7 @@ variable "common_tags" {
 variable "name" {}
 
 variable "environment" {
-  default = "Dev"
+  default = "dev"
 }
 
 variable "cluster_name" {
@@ -29,7 +29,7 @@ variable "engine"{
     default ="aurora-mysql"
 }
 variable "database_name" {
-    default=""
+    default="drupaladmin"
 }
 
 variable "master_username" {
@@ -37,11 +37,11 @@ variable "master_username" {
 }
 
 variable "master_password" {
-  default = "24wrsfxv24WRSFXV"
+  default = "srijandrupal123"
 }
 
 variable "instance_class" {
-  default = "db.t3.medium"
+  default = "db.t2.medium"
 }
 
 variable "availability_zones" {

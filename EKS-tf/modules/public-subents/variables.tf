@@ -22,7 +22,7 @@ variable "vpc_id" {
 }
 
 variable "environment" {
-  default = "Dev"
+  default = "dev"
 }
 
 variable "public_subnets" {

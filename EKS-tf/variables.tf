@@ -13,7 +13,7 @@ variable "region" {
 }
 
 variable "environment" {
-  default = "Dev"
+  default = "dev"
 }
 
 variable "created_by" {
@@ -21,7 +21,7 @@ variable "created_by" {
 }
 
 variable "name" {
-  default = "Srijan"
+  default = "srijan"
 }
 
 ######################### VPC ################

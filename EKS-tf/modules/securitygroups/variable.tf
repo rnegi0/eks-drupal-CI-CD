@@ -22,5 +22,5 @@ variable "vpc_id" {
 }
 
 variable "environment" {
-  default = "Dev"
+  default = "dev"
 }
