@@ -1,0 +1,18 @@
+ containers:
+      - name: fluentd
+        image: fluent/fluentd-kubernetes-daemonset:elasticsearch
+        env:
+          - name:  FLUENT_ELASTICSEARCH_HOST
+            value: "f505e785.qb0x.com"
+          - name:  FLUENT_ELASTICSEARCH_PORT
+            value: "30216"
+          - name: FLUENT_ELASTICSEARCH_SCHEME
+            value: "https"
+          - name: FLUENT_UID
+            value: "0"
+          # X-Pack Authentication
+          # =====================
+          - name: FLUENT_ELASTICSEARCH_USER
+            value: "abf54990f0a286dc5d76"
+          - name: FLUENT_ELASTICSEARCH_PASSWORD
+            value: "75c4bd6f7b"
