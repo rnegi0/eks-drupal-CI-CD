@@ -7,7 +7,8 @@ provider "aws" {
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = "${var.vpc_id == "" ? data.aws_vpc.vpc.id : var.vpc_id}"
-  count  = "${length(var.public_subnets) >= 1 ? 1 : 0}"
+  #count  = "${length(var.public_subnets) >= 1 ? 1 : 0}"
+  #count             = "${length(var.public_subnets)}"
   tags   = "${merge(map("Name", "${format("%s-%s-igw",var.name,var.environment)}"),"${var.common_tags}")}"
 
   lifecycle {
@@ -25,7 +26,7 @@ resource "aws_subnet" "public" {
   tags  = "${merge(map("Name", "${format("%s-%s-%s-public-%s", var.name,var.environment, lookup(var.public_subnets, element(keys(var.public_subnets), count.index)), element(split("-", element(var.availability_zones, count.index)),2))}"),map("subnet-type","${lookup(var.public_subnets, element(keys(var.public_subnets), count.index))}"),map("az","${element(var.availability_zones, count.index)}"),map("kubernetes.io/cluster/${var.name}-${var.environment}", "owned"),"${var.common_tags}")}"
 
   lifecycle {
-    ignore_changes = ["tags.%"]
+    ignore_changes = ["tags"]
   }
 }
 
@@ -35,10 +36,9 @@ resource "aws_route_table" "public" {
   tags   = "${merge(map("Name", "${format("%s-%s-%s-public-rt-%s", var.name,var.environment, lookup(var.public_subnets, element(keys(var.public_subnets), count.index)), element(split("-", element(var.availability_zones, count.index)),2))}"),map("role","${lookup(var.public_subnets, element(keys(var.public_subnets), count.index))}"),map("az","${element(var.availability_zones, count.index)}"),"${var.common_tags}")}"
 
   lifecycle {
-    ignore_changes = ["tags.%"]
+    ignore_changes = ["tags"]
   }
 }
-
 resource "aws_route" "public" {
   route_table_id         = "${element(aws_route_table.public.*.id, count.index)}"
   destination_cidr_block = "0.0.0.0/0"
