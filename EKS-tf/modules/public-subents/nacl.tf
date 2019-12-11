@@ -5,7 +5,11 @@
 
 resource "aws_network_acl" "elb" {
   vpc_id     = "${var.vpc_id == "" ? data.aws_vpc.vpc.id : var.vpc_id}"
-  subnet_ids = ["${aws_subnet.public.*.id}"]
+  subnet_ids = ["${aws_subnet.public.*.id[0]}"]
+  #subnet_ids      = "${element(aws_subnet.public.*.id, count.index)}"
+  #subnet_id     = "${aws_subnet.public.*.id[0]}"
+
+
 
   // allows traffic from internet to our services behind elb
   // also includes traffic from private subnet to internet through it
