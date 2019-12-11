@@ -21,9 +21,9 @@ resource "aws_vpc_dhcp_options" "dhcp_options" {
 
   tags = "${var.tags}"
 
-  lifecycle {
-    ignore_changes = ["tags"]
-  }
+  # lifecycle {
+  #   ignore_changes = ["tags.%"]
+  # }
 }
 
 ##====================================# DHCP Options Set Association #=======================
